@@ -32,5 +32,6 @@ forest.fit(X_train,y_train)
 
 # Saving model 
 joblib.dump(forest, 'rf_model.joblib')
+# This file is in git ignore but once the code is run it will be generated on local file
 
 
