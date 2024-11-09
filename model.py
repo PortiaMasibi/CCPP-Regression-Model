@@ -12,7 +12,8 @@ import joblib
 CCPP = pd.read_csv('data/CCPP.csv')
 
 # Separating Data into X and y 
-X = CCPP.drop(['electric_power'], axis = 1)
+#Choosing the columns incase any extra ones were added
+X = CCPP[['temperature', 'exhaust_vaccum', 'ambient_pressure','relative_humidity']]
 y = CCPP['electric_power']
 
 # Split in train and test sets
