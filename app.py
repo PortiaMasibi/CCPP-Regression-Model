@@ -6,7 +6,7 @@ import numpy as np
 from prediction import predict 
 
 
-st.title("Predicting Plant Output Power")
+st.title("Predicting Plant Output Power (MW)")
 st.markdown("Change the temperature,exhaust vaccum,ambient pressure,relative humidity to get the Electrical power in MW")
 
 # inserting the  sliders for this 
@@ -21,8 +21,9 @@ with col2:
     humidity = st.slider('Relative Humidity (%)',10,140,10)
 
 if st.button("Predict Electrical Power"):
-    result = predict(np.array([temp,vaccum,pressure,humidity]))
-    st.text(result[0])
+    result = predict(np.array([temp,vaccum,pressure,humidity]).reshape(1, -1)) # reshaping data for one sample
+    power = round(result[0])
+    st.text(power)
 
 # run:  streamlit run app.py
 
